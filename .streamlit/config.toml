@@ -1,5 +1,5 @@
 [theme]
 base="dark"
 primaryColor="#00ffcc"
-backgroundColor="linear-gradient(to bottom right, #e5f5e0, #c8e6c9);"
+backgroundColor="black"
 secondaryBackgroundColor="#262730"
