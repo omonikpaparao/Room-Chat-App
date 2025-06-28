@@ -4,6 +4,19 @@ from datetime import *
 import time
 import certifi
 st.set_page_config(page_title="OMPR Chat APP", layout="centered")
+st.markdown("""
+    <style>
+    div[data-baseweb="input"] > div {
+        background-color: #e6ffe6 !important;
+        border: 2px solid #25d366;
+        border-radius: 10px;
+    }
+    input::placeholder {
+        color: #555 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
@@ -152,19 +165,7 @@ with messages_box.container():
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
     with col1:
-        st.markdown("""
-    <style>
-    div[data-baseweb="input"] > div {
-        background-color: #e6ffe6 !important;
-        border: 2px solid #25d366;
-        border-radius: 10px;
-    }
-    input::placeholder {
-        color: #555 !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
+        msg = st.text_input("", placeholder="Enter Message", label_visibility="collapsed")
     with col2:
         send = st.form_submit_button("Send")
     if send and msg.strip():
