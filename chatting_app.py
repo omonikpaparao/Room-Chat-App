@@ -13,7 +13,7 @@ hide_streamlit_style = """
     .st-emotion-cache-18ni7ap {display: none;}
     div.stButton > button {
         background-color: #25d366 !important;
-        color: white !important;
+        color:black;
         border: none;
         border-radius: 10px;
         font-size: 16px;
