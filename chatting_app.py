@@ -154,7 +154,7 @@ with st.form("message_form", clear_on_submit=True):
     with col1:
         msg = st.text_input("", placeholder="Enter Message", label_visibility="collapsed")
     with col2:
-        send = st.form_submit_button("Send")
+        send = st.form_submit_button("➤")
     if send and msg.strip():
         send_message(st.session_state.name, st.session_state.room, msg)
 
