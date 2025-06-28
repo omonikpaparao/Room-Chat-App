@@ -4,23 +4,6 @@ from datetime import *
 import time
 import certifi
 st.set_page_config(page_title="OMPR Chat APP", layout="centered")
-st.markdown("""
-    <style>
-    div[data-baseweb="input"] > div {
-        background-color: #e6ffe6 !important;
-        border: 2px solid #25d366;
-        border-radius: 10px;
-        color:black;
-    }
-    input{
-    color:black;
-    }
-    input::placeholder {
-        color: black; !important;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
