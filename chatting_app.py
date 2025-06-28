@@ -19,6 +19,7 @@ hide_streamlit_style = """
         display: inline-block;
         word-wrap: break-word;
         font-size: 16px;
+        color:black;
     }
 
     /* Sent by user */
