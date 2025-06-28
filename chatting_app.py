@@ -1,6 +1,6 @@
 import streamlit as st
 from pymongo import MongoClient
-from datetime import datetime
+from datetime import *
 import time
 import certifi
 st.set_page_config(page_title="OMPR Chat APP", layout="centered")
@@ -142,7 +142,7 @@ with messages_box.container():
                 <div class='message {alignment}'>
                     <b>{msg['name']}</b><br>
                     {msg['text']}
-                    <div class='timestamp'>{msg['timestamp'].strftime('%b %d, %Y - %I:%M %p')}</div>
+                    <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
                 </div>
             </div>
         """, unsafe_allow_html=True)
