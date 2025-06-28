@@ -6,15 +6,12 @@ import certifi
 st.set_page_config(page_title="OMPR Chat APP", layout="centered")
 hide_streamlit_style = """
     <style>
-    #MainMenu, footer, header {visibility: hidden;}
-    .st-emotion-cache-1dp5vir, .st-emotion-cache-18ni7ap {display: none;}
-
-    /* Message bubble styles */
-    input::placeholder {
-    color: #666666;  /* or use #999999 for lighter */
-    opacity: 1;      /* Ensure it's fully visible */
-}
-    .message {
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .st-emotion-cache-1dp5vir {display: none;}
+    .st-emotion-cache-18ni7ap {display: none;}
+     .message {
         padding: 8px 12px;
         margin: 5px 0;
         border-radius: 15px;
@@ -22,44 +19,34 @@ hide_streamlit_style = """
         display: inline-block;
         word-wrap: break-word;
         font-size: 16px;
-        color: black;
+        color:black;
     }
+
+    /* Sent by user */
     .user {
         background-color: #dcf8c6;
         align-self: flex-end;
         text-align: left;
     }
+
+    /* Received */
     .other {
         background-color: #ffffff;
         align-self: flex-start;
         text-align: left;
     }
+
     .chat-container {
         display: flex;
         flex-direction: column;
     }
+
     .timestamp {
         font-size: 10px;
         color: gray;
         margin-top: 2px;
     }
 
-    /* Input box styling */
-    input[type="text"] {
-        background-color: #f0fff0;
-        border: 2px solid #25d366;
-        border-radius: 20px;
-        padding: 10px;
-        font-size: 16px;
-        color: black;
-    }
-
-    /* Send button color */
-    button[kind="primary"] {
-        background-color: #25d366 !important;
-        color: white !important;
-        border-radius: 10px;
-    }
     </style>
     </style>
 """
@@ -136,7 +123,7 @@ if not st.session_state.joined:
 
 # ---------------------- Chat UI ---------------------- #
 st.title(f"Chat Room: {st.session_state.room}")
-st.markdown(f"**Logged in as:** `{st.session_state.name}`")
+st.markdown(f"**Logged in as:** {st.session_state.name}")
 
 # Message display area
 messages_box = st.empty()
