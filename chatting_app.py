@@ -10,6 +10,10 @@ hide_streamlit_style = """
     .st-emotion-cache-1dp5vir, .st-emotion-cache-18ni7ap {display: none;}
 
     /* Message bubble styles */
+    input::placeholder {
+    color: #666666;  /* or use #999999 for lighter */
+    opacity: 1;      /* Ensure it's fully visible */
+}
     .message {
         padding: 8px 12px;
         margin: 5px 0;
