@@ -9,8 +9,10 @@ st.markdown("""
     div[data-baseweb="input"] > div {
         background-color: #e6ffe6 !important;
         border: 2px solid #25d366;
-        color:black;
         border-radius: 10px;
+    }
+    input{
+    color:black;
     }
     input::placeholder {
         color: #555 !important;
