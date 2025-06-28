@@ -16,7 +16,7 @@ st.markdown("""
     color:black;
     }
     input::placeholder {
-        color: #555 !important;
+        color: black; !important;
     }
     </style>
 """, unsafe_allow_html=True)
