@@ -133,7 +133,7 @@ if not st.session_state.messages:
     if st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 #display messages new
-with messages_box:
+with messages_box.container():
     for msg in st.session_state.messages:
         alignment = "user" if msg["name"] == st.session_state.name else "other"
         st.markdown(f"""
