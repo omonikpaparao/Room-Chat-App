@@ -11,6 +11,17 @@ hide_streamlit_style = """
     header {visibility: hidden;}
     .st-emotion-cache-1dp5vir {display: none;}
     .st-emotion-cache-18ni7ap {display: none;}
+    div.stButton > button {
+        background-color: #25d366 !important;
+        color: white !important;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        margin-top: 5px;
+    }
      .message {
         padding: 8px 12px;
         margin: 5px 0;
