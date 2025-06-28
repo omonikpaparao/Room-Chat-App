@@ -3,7 +3,16 @@ from pymongo import MongoClient
 from datetime import datetime
 import time
 import certifi
-
+hide_streamlit_style = """
+    <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    .st-emotion-cache-1dp5vir {display: none;}
+    .st-emotion-cache-18ni7ap {display: none;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # ---------------------- MongoDB Connection ---------------------- #
 client = MongoClient(st.secrets["mongodb"]["uri"])
 db = client["chat_database"]
