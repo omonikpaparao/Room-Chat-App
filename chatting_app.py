@@ -152,7 +152,19 @@ with messages_box.container():
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
     with col1:
-        msg = st.text_input("", placeholder="Enter Message", label_visibility="collapsed")
+        st.markdown("""
+    <style>
+    div[data-baseweb="input"] > div {
+        background-color: #e6ffe6 !important;
+        border: 2px solid #25d366;
+        border-radius: 10px;
+    }
+    input::placeholder {
+        color: #555 !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
     with col2:
         send = st.form_submit_button("Send")
     if send and msg.strip():
