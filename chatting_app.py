@@ -8,6 +8,7 @@ import certifi
 client = MongoClient(st.secrets["mongodb"]["uri"])
 db = client["chat_database"]
 room_meta = db["rooms"]  # Collection for storing room passwords
+st.set_page_config("Chat APP")
 
 # ---------------------- Page Setup ---------------------- #
 st.set_page_config(page_title="Streamlit Chat App", layout="centered")
