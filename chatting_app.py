@@ -10,6 +10,7 @@ st.markdown("""
         background-color: #e6ffe6 !important;
         border: 2px solid #25d366;
         border-radius: 10px;
+        color:black;
     }
     input{
     color:black;
