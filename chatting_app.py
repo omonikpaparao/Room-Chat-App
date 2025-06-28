@@ -15,7 +15,6 @@ hide_streamlit_style = """
         background-color: #25d366 !important;
         color: white !important;
         border: none;
-        padding: 10px 16px;
         border-radius: 10px;
         font-size: 16px;
         font-weight: bold;
