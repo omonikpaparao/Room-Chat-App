@@ -142,7 +142,7 @@ with messages_box.container():
                 <div class='message {alignment}'>
                     <b>{msg['name']}</b><br>
                     {msg['text']}
-                    <div class='timestamp'>{msg['timestamp'].strftime('%H:%M:%S')}</div>
+                    <div class='timestamp'>{msg['timestamp'].strftime('%b %d, %Y - %I:%M %p')}</div>
                 </div>
             </div>
         """, unsafe_allow_html=True)
