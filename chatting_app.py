@@ -11,6 +11,42 @@ hide_streamlit_style = """
     header {visibility: hidden;}
     .st-emotion-cache-1dp5vir {display: none;}
     .st-emotion-cache-18ni7ap {display: none;}
+     .message {
+        padding: 8px 12px;
+        margin: 5px 0;
+        border-radius: 15px;
+        max-width: 70%;
+        display: inline-block;
+        word-wrap: break-word;
+        font-size: 16px;
+    }
+
+    /* Sent by user */
+    .user {
+        background-color: #dcf8c6;
+        align-self: flex-end;
+        text-align: left;
+    }
+
+    /* Received */
+    .other {
+        background-color: #ffffff;
+        align-self: flex-start;
+        text-align: left;
+    }
+
+    .chat-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .timestamp {
+        font-size: 10px;
+        color: gray;
+        margin-top: 2px;
+    }
+
+    </style>
     </style>
 """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
@@ -96,13 +132,25 @@ if not st.session_state.messages:
     st.session_state.messages = get_new_messages(st.session_state.room, datetime.min)
     if st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
-
-# Display messages
-with messages_box.container():
+#display messages new
+with messages_box:
+    for msg in st.session_state.messages:
+        alignment = "user" if msg["name"] == st.session_state.name else "other"
+        st.markdown(f"""
+            <div class='chat-container'>
+                <div class='message {alignment}'>
+                    <b>{msg['name']}</b><br>
+                    {msg['text']}
+                    <div class='timestamp'>{msg['timestamp'].strftime('%H:%M:%S')}</div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+# Display messagesold
+'''with messages_box.container():
     for message in st.session_state.messages:
         ts = message["timestamp"].strftime("%H:%M:%S")
         st.markdown(f"**{message['name']}**: {message['text']}")
-
+'''
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
