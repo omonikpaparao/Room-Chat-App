@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from datetime import datetime
 import time
 import certifi
+st.set_page_config(page_title="OMPR Chat APP", layout="centered")
 hide_streamlit_style = """
     <style>
     #MainMenu {visibility: hidden;}
@@ -19,7 +20,6 @@ db = client["chat_database"]
 room_meta = db["rooms"]  # Collection for storing room passwords
 
 # ---------------------- Page Setup ---------------------- #
-st.set_page_config(page_title="OMPR Chat APP", layout="centered")
 
 # ---------------------- Session State Initialization ---------------------- #
 if "name" not in st.session_state:
