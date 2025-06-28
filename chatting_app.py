@@ -146,11 +146,7 @@ with messages_box:
             </div>
         """, unsafe_allow_html=True)
 # Display messagesold
-'''with messages_box.container():
-    for message in st.session_state.messages:
-        ts = message["timestamp"].strftime("%H:%M:%S")
-        st.markdown(f"**{message['name']}**: {message['text']}")
-'''
+
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
