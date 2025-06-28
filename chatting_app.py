@@ -8,10 +8,9 @@ import certifi
 client = MongoClient(st.secrets["mongodb"]["uri"])
 db = client["chat_database"]
 room_meta = db["rooms"]  # Collection for storing room passwords
-st.set_page_config("Chat APP")
 
 # ---------------------- Page Setup ---------------------- #
-st.set_page_config(page_title="Streamlit Chat App", layout="centered")
+st.set_page_config(page_title="OMPR Chat APP", layout="centered")
 
 # ---------------------- Session State Initialization ---------------------- #
 if "name" not in st.session_state:
