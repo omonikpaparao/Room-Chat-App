@@ -156,13 +156,6 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
-scroll_js = """
-    <script>
-        var chat = window.document;
-        chat.scrollTo(0, document.body.scrollHeight);
-    </script>
-"""
-st.markdown(scroll_js, unsafe_allow_html=True)
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
