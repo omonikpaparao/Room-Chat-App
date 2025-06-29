@@ -136,7 +136,6 @@ st.markdown(f"**Logged in as:** {st.session_state.name}")
 # Message display area
 
 messages_box=st.empty()
-flag=0
 # Display existing messages on first load
 # Fetch messages on first load only
 # Fetch messages on first load
@@ -173,10 +172,12 @@ new_messages = get_new_messages(st.session_state.room, st.session_state.last_tim
 if new_messages:
     st.session_state.messages.extend(new_messages)
     st.session_state.last_timestamp = new_messages[-1]["timestamp"]
-if(flag==0):
-    time.sleep(10)
+# Smart refresh logic
+if st.session_state.messages:
+    # Messages already present: quick refresh
+    time.sleep(1)
     st.rerun()
-    flag=1
-# Refresh every 2 seconds
 else:
+    # New room created (no messages): wait 10 seconds before refresh
+    time.sleep(10)
     st.rerun()
