@@ -157,7 +157,6 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
-        flag=flag+1
 
 # Message input form
 with st.form("message_form", clear_on_submit=True):
@@ -177,6 +176,7 @@ if new_messages:
 if(flag==0):
     time.sleep(10)
     st.rerun()
+    flag=1
 # Refresh every 2 seconds
 else:
     st.rerun()
