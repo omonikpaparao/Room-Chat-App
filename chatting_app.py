@@ -176,9 +176,6 @@ with st.form("message_form", clear_on_submit=True):
             "timestamp": timestamp_now
         })
         st.session_state.last_timestamp = timestamp_now
-    
-        st.rerun()
-
 
 # Fetch and append only new messages
 new_messages = get_new_messages(st.session_state.room, st.session_state.last_timestamp)
