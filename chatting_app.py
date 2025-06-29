@@ -135,7 +135,7 @@ st.title(f"Chat Room: {st.session_state.room}")
 st.markdown(f"**Logged in as:** {st.session_state.name}")
 # Message display area
 
-message_box=st.empty()
+messages_box=st.empty()
 # Display existing messages on first load
 # Fetch messages on first load only
 # Fetch messages on first load
