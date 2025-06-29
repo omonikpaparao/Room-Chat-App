@@ -103,7 +103,9 @@ def get_new_messages(room, since):
 
 # ---------------------- Room Join/Create Interface ---------------------- #
 if not st.session_state.joined:
-    st.title("Join or Create a Chat Room")
+    st.title("OMPR Chat App")
+    st.write("If You want to create a New Room Just Enter Your Name, Enter a unique Room Code and a Password and click Join then New Room will be Created!!!")
+    st.write("If Yu want to Join in an Existing Room Just enter the Credentials and Join the Room")
 
     with st.form("join_form"):
         name = st.text_input("Enter your Name:")
