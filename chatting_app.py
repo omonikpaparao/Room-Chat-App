@@ -3,6 +3,7 @@ from pymongo import MongoClient
 from datetime import *
 import time
 import certifi
+import streamlit.components.v1 as components
 st.set_page_config(page_title="OMPR Chat APP", layout="centered")
 hide_streamlit_style = """
     <style>
