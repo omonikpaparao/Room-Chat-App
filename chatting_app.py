@@ -76,7 +76,7 @@ if "room" not in st.session_state:
 if "joined" not in st.session_state:
     st.session_state.joined = False
 if "messages" not in st.session_state:
-    st.session_state.messages = []
+    st.session_state.messages = ["Welcome"]
 if "last_timestamp" not in st.session_state:
     st.session_state.last_timestamp = datetime.min
 
