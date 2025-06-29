@@ -20,7 +20,7 @@ hide_streamlit_style = """
         font-weight: bold;
         transition: background-color 0.3s ease;
         margin-top: 5px;
-        width:140px;
+        width:90px;
     }
      .message {
         padding: 8px 12px;
