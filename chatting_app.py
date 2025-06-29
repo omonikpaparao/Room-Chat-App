@@ -156,6 +156,20 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
+        # Dummy element to anchor scroll
+    st.markdown("<div id='bottom-scroll'></div>", unsafe_allow_html=True)
+
+    # Inject JS to scroll to the bottom on load
+    scroll_script = """
+        <script>
+            const chatBottom = document.getElementById("bottom-scroll");
+            if (chatBottom) {
+                chatBottom.scrollIntoView({behavior: "smooth"});
+            }
+        </script>
+    """
+    st.components.v1.html(scroll_script, height=0)
+
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
