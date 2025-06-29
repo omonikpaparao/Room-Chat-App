@@ -146,7 +146,7 @@ if not st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 #display messages new
 with messages_box.container():
-    # Start the chat container with custom background
+    # Start the outer chat container with background color
     st.markdown("""
         <div style='
             background-color: #e6f7ff;
@@ -158,10 +158,10 @@ with messages_box.container():
         '>
     """, unsafe_allow_html=True)
 
-    # Loop through messages and render each with styling
+    # Render each chat message
     for msg in st.session_state.messages:
         alignment = "user" if msg["name"] == st.session_state.name else "other"
-        st.markdown(f"""
+        message_html = f"""
             <div class='chat-container'>
                 <div class='message {alignment}'>
                     <b>{msg['name']}</b><br>
@@ -171,10 +171,12 @@ with messages_box.container():
                     </div>
                 </div>
             </div>
-        """, unsafe_allow_html=True)
+        """
+        st.markdown(message_html, unsafe_allow_html=True)
 
-    # Close the chat container
+    # Close the outer container
     st.markdown("</div>", unsafe_allow_html=True)
+
 
 
 
