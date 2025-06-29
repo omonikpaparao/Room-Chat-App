@@ -19,7 +19,6 @@ hide_streamlit_style = """
         font-size: 16px;
         font-weight: bold;
         transition: background-color 0.3s ease;
-        margin-top: 5px;
         width:90px;
     }
      .message {
