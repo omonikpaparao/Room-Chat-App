@@ -175,7 +175,6 @@ if new_messages:
 # Smart refresh logic
 if st.session_state.messages:
     # Messages already present: quick refresh
-    time.sleep(1)
     st.rerun()
 else:
     # New room created (no messages): wait 10 seconds before refresh
