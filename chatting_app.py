@@ -138,12 +138,13 @@ st.markdown(f"**Logged in as:** {st.session_state.name}")
 
 # Display existing messages on first load
 # Fetch messages on first load only
-if not st.session_state.messages:
+# Fetch messages on first load
+if not st.session_state.messages and st.session_state.last_timestamp == datetime.min:
     st.session_state.messages = get_new_messages(st.session_state.room, datetime.min)
     if st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 
-# Display message box only if there are messages
+# Show messages only if there's something to display
 if st.session_state.messages:
     messages_box = st.container()
     with messages_box:
@@ -158,6 +159,10 @@ if st.session_state.messages:
                     </div>
                 </div>
             """, unsafe_allow_html=True)
+else:
+    # Show info only once, just after joining new room with no messages
+    if st.session_state.last_timestamp == datetime.min:
+        st.info("🟢 You have created a new room. Start chatting now!")
 
 # Display messagesold
 
