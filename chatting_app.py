@@ -142,6 +142,7 @@ st.markdown(f"**Logged in as:** {st.session_state.name}")
 if st.button("🗑️ Clear Chat", type="secondary"):
     clear_chat(st.session_state.room)
     st.success("Chat cleared!")
+    st.rerun()
 # Message display area
 messages_box = st.empty()
 
