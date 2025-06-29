@@ -109,7 +109,7 @@ if not st.session_state.joined:
         room = st.text_input("Enter the Room Code:")
         password = st.text_input("Enter the Room Password:", type="password")
         submit = st.form_submit_button("Join")
-
+        st.write("Please Wait....")
         if submit:
             if not name or not room or not password:
                 st.warning("Please fill in all fields.")
