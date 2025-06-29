@@ -168,6 +168,14 @@ with st.form("message_form", clear_on_submit=True):
     if send and msg.strip():
        st.write("Sending....")
        send_message(st.session_state.name, st.session_state.room, msg)
+    # Add this right after displaying the messages
+    scroll_js = """
+        <script>
+            var chat = window.document;
+            chat.scrollTo(0, document.body.scrollHeight);
+        </script>
+    """
+    st.markdown(scroll_js, unsafe_allow_html=True)
 
 # Fetch and append only new messages
 new_messages = get_new_messages(st.session_state.room, st.session_state.last_timestamp)
