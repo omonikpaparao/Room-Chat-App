@@ -166,6 +166,7 @@ with st.form("message_form", clear_on_submit=True):
         send = st.form_submit_button("➤")
     
     if send and msg.strip():
+        st.write("Sending....")
         send_message(st.session_state.name, st.session_state.room, msg)
 
 # Fetch and append only new messages
