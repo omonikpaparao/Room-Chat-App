@@ -136,6 +136,7 @@ st.markdown(f"**Logged in as:** {st.session_state.name}")
 # Message display area
 
 messages_box=st.empty()
+flag=0
 # Display existing messages on first load
 # Fetch messages on first load only
 # Fetch messages on first load
@@ -156,6 +157,7 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
+        flag=flag+1
 
 # Message input form
 with st.form("message_form", clear_on_submit=True):
@@ -172,7 +174,9 @@ new_messages = get_new_messages(st.session_state.room, st.session_state.last_tim
 if new_messages:
     st.session_state.messages.extend(new_messages)
     st.session_state.last_timestamp = new_messages[-1]["timestamp"]
-
-time.sleep(1)
+if(flag==0):
+    time.sleep(10)
+    st.rerun()
 # Refresh every 2 seconds
-st.rerun()
+else:
+    st.rerun()
