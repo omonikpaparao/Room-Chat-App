@@ -137,23 +137,28 @@ st.markdown(f"**Logged in as:** {st.session_state.name}")
 messages_box = st.empty()
 
 # Display existing messages on first load
+# Fetch messages on first load only
 if not st.session_state.messages:
     st.session_state.messages = get_new_messages(st.session_state.room, datetime.min)
     if st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
-#display messages new
-with messages_box.container():
-    for msg in st.session_state.messages:
-        alignment = "user" if msg["name"] == st.session_state.name else "other"
-        st.markdown(f"""
-            <div class='chat-container'>
-                <div class='message {alignment}'>
-                    <b>{msg['name']}</b><br>
-                    {msg['text']}
-                    <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
+
+# Display message box only if there are messages
+if st.session_state.messages:
+    messages_box = st.container()
+    with messages_box:
+        for msg in st.session_state.messages:
+            alignment = "user" if msg["name"] == st.session_state.name else "other"
+            st.markdown(f"""
+                <div class='chat-container'>
+                    <div class='message {alignment}'>
+                        <b>{msg['name']}</b><br>
+                        {msg['text']}
+                        <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
+                    </div>
                 </div>
-            </div>
-        """, unsafe_allow_html=True)
+            """, unsafe_allow_html=True)
+
 # Display messagesold
 
 # Message input form
