@@ -135,36 +135,27 @@ st.title(f"Chat Room: {st.session_state.room}")
 st.markdown(f"**Logged in as:** {st.session_state.name}")
 # Message display area
 
-
+message_box=st.empty()
 # Display existing messages on first load
 # Fetch messages on first load only
 # Fetch messages on first load
-if not st.session_state.messages and st.session_state.last_timestamp == datetime.min:
+if not st.session_state.messages:
     st.session_state.messages = get_new_messages(st.session_state.room, datetime.min)
     if st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
-
-# Show messages only if there's something to display
-if st.session_state.messages:
-    messages_box = st.container()
-    with messages_box:
-        for msg in st.session_state.messages:
-            alignment = "user" if msg["name"] == st.session_state.name else "other"
-            st.markdown(f"""
-                <div class='chat-container'>
-                    <div class='message {alignment}'>
-                        <b>{msg['name']}</b><br>
-                        {msg['text']}
-                        <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
-                    </div>
+#display messages new
+with messages_box.container():
+    for msg in st.session_state.messages:
+        alignment = "user" if msg["name"] == st.session_state.name else "other"
+        st.markdown(f"""
+            <div class='chat-container'>
+                <div class='message {alignment}'>
+                    <b>{msg['name']}</b><br>
+                    {msg['text']}
+                    <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
                 </div>
-            """, unsafe_allow_html=True)
-else:
-    # Show info only once, just after joining new room with no messages
-    if st.session_state.last_timestamp == datetime.min:
-        st.info("🟢 You have created a new room. Start chatting now!")
-
-# Display messagesold
+            </div>
+        """, unsafe_allow_html=True)
 
 # Message input form
 with st.form("message_form", clear_on_submit=True):
