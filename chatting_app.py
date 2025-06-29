@@ -165,17 +165,9 @@ with st.form("message_form", clear_on_submit=True):
     with col2:
         send = st.form_submit_button("➤")
     
-    if send and msg.strip():
-        timestamp_now = datetime.utcnow()
+      if send and msg.strip():
+        st.write("Sending....")
         send_message(st.session_state.name, st.session_state.room, msg)
-    
-        # ✅ Instant local display without waiting for database fetch
-        st.session_state.messages.append({
-            "name": st.session_state.name,
-            "text": msg.strip(),
-            "timestamp": timestamp_now
-        })
-        st.session_state.last_timestamp = timestamp_now
 
 # Fetch and append only new messages
 new_messages = get_new_messages(st.session_state.room, st.session_state.last_timestamp)
