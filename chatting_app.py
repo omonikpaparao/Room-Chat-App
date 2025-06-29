@@ -77,6 +77,7 @@ if "joined" not in st.session_state:
     st.session_state.joined = False
 if "messages" not in st.session_state:
     st.session_state.messages = ["Welcome"]
+    st.session_state.name="user"
 if "last_timestamp" not in st.session_state:
     st.session_state.last_timestamp = datetime.min
 
