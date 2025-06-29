@@ -166,6 +166,17 @@ with st.form("message_form", clear_on_submit=True):
         send = st.form_submit_button("➤")
     if send and msg.strip():
         send_message(st.session_state.name, st.session_state.room, msg)
+        if send and msg.strip():
+            send_message(st.session_state.name, st.session_state.room, msg)
+            # Immediately add it to local state for fast display
+            st.session_state.messages.append({
+                "name": st.session_state.name,
+                "text": msg.strip(),
+                "timestamp": datetime.utcnow()
+            })
+            st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
+            st.rerun()
+
 
 # Fetch and append only new messages
 new_messages = get_new_messages(st.session_state.room, st.session_state.last_timestamp)
