@@ -146,6 +146,10 @@ if not st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 #display messages new
 with messages_box.container():
+    st.markdown("""
+        <div id="chat-area" style="background-color: #f0f0f0; padding: 15px; border-radius: 10px; min-height: 400px;">
+    """, unsafe_allow_html=True)
+
     for msg in st.session_state.messages:
         alignment = "user" if msg["name"] == st.session_state.name else "other"
         st.markdown(f"""
@@ -157,6 +161,9 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # Message input form
 with st.form("message_form", clear_on_submit=True):
