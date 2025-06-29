@@ -169,7 +169,7 @@ with messages_box.container():
         """
     chat_html += "</div>"
 
-    st.markdown(chat_html, unsafe_allow_html=True)
+st.markdown(chat_html, unsafe_allow_html=True)
 
 
 
