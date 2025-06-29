@@ -97,6 +97,10 @@ def send_message(name, room, text):
         "text": text,
         "timestamp": datetime.utcnow()
     })
+def clear_chat(room):
+    db[room].delete_many({})
+    st.session_state.messages = []
+    st.session_state.last_timestamp = datetime.min
 
 def get_new_messages(room, since):
     return list(db[room].find({"timestamp": {"$gt": since}}).sort("timestamp", 1))
@@ -134,7 +138,11 @@ if not st.session_state.joined:
 # ---------------------- Chat UI ---------------------- #
 st.title(f"Chat Room: {st.session_state.room}")
 st.markdown(f"**Logged in as:** {st.session_state.name}")
-
+# Add Clear Chat Button (only visible to the user who joined)
+if st.button("🗑️ Clear Chat", type="secondary"):
+    clear_chat(st.session_state.room)
+    st.success("Chat cleared!")
+    st.rerun()
 # Message display area
 messages_box = st.empty()
 
