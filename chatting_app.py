@@ -146,37 +146,17 @@ if not st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 #display messages new
 with messages_box.container():
-    chat_html = """
-    <div style='
-        background-color: #e6f7ff;
-        padding: 15px;
-        border-radius: 10px;
-        min-height: 400px;
-        max-height: 500px;
-        overflow-y: auto;
-    '>
-    """
     for msg in st.session_state.messages:
         alignment = "user" if msg["name"] == st.session_state.name else "other"
-        chat_html += f"""
-        <div class='chat-container'>
-            <div class='message {alignment}'>
-                <b>{msg['name']}</b><br>
-                {msg['text']}
-                <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
+        st.markdown(f"""
+            <div class='chat-container'>
+                <div class='message {alignment}'>
+                    <b>{msg['name']}</b><br>
+                    {msg['text']}
+                    <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
+                </div>
             </div>
-        </div>
-        """
-    chat_html += "</div>"
-
-    # Show it
-    st.markdown(chat_html, unsafe_allow_html=True)
-
-
-
-
-
-
+        """, unsafe_allow_html=True)
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
