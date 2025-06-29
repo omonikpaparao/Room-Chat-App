@@ -156,7 +156,13 @@ with messages_box.container():
                 </div>
             </div>
         """, unsafe_allow_html=True)
-
+scroll_js = """
+    <script>
+        var chat = window.document;
+        chat.scrollTo(0, document.body.scrollHeight);
+    </script>
+"""
+st.markdown(scroll_js, unsafe_allow_html=True)
 # Message input form
 with st.form("message_form", clear_on_submit=True):
     col1, col2 = st.columns([4, 1])
@@ -169,13 +175,6 @@ with st.form("message_form", clear_on_submit=True):
        st.write("Sending....")
        send_message(st.session_state.name, st.session_state.room, msg)
     # Add this right after displaying the messages
-    scroll_js = """
-        <script>
-            var chat = window.document;
-            chat.scrollTo(0, document.body.scrollHeight);
-        </script>
-    """
-    st.markdown(scroll_js, unsafe_allow_html=True)
 
 # Fetch and append only new messages
 new_messages = get_new_messages(st.session_state.room, st.session_state.last_timestamp)
