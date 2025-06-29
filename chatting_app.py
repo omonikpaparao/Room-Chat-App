@@ -76,8 +76,7 @@ if "room" not in st.session_state:
 if "joined" not in st.session_state:
     st.session_state.joined = False
 if "messages" not in st.session_state:
-    st.session_state.messages = ["Welcome"]
-    st.session_state.name="user"
+    st.session_state.messages = []
 if "last_timestamp" not in st.session_state:
     st.session_state.last_timestamp = datetime.min
 
@@ -174,5 +173,6 @@ if new_messages:
     st.session_state.messages.extend(new_messages)
     st.session_state.last_timestamp = new_messages[-1]["timestamp"]
 
+time.sleep(1)
 # Refresh every 2 seconds
 st.rerun()
