@@ -146,23 +146,31 @@ if not st.session_state.messages:
         st.session_state.last_timestamp = st.session_state.messages[-1]["timestamp"]
 #display messages new
 with messages_box.container():
-    st.markdown("""
-        <div id="chat-area" style="background-color: #f0f0f0; padding: 15px; border-radius: 10px; min-height: 400px;">
-    """, unsafe_allow_html=True)
-
+    chat_html = """
+    <div style='
+        background-color: #e6f7ff;
+        padding: 15px;
+        border-radius: 10px;
+        min-height: 400px;
+        max-height: 500px;
+        overflow-y: auto;
+    '>
+    """
     for msg in st.session_state.messages:
         alignment = "user" if msg["name"] == st.session_state.name else "other"
-        st.markdown(f"""
-            <div class='chat-container'>
-                <div class='message {alignment}'>
-                    <b>{msg['name']}</b><br>
-                    {msg['text']}
-                    <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
-                </div>
+        chat_html += f"""
+        <div class='chat-container'>
+            <div class='message {alignment}'>
+                <b>{msg['name']}</b><br>
+                {msg['text']}
+                <div class='timestamp'>{(msg["timestamp"] + timedelta(hours=5, minutes=30)).strftime('%b %d, %Y - %I:%M %p')}</div>
             </div>
-        """, unsafe_allow_html=True)
+        </div>
+        """
+    chat_html += "</div>"
 
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown(chat_html, unsafe_allow_html=True)
+
 
 
 # Message input form
